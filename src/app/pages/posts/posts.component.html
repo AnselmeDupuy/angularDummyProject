@@ -1,1 +1,17 @@
-<p>posts works!</p>
+<div class="container">
+    <a [routerLink]="'/users/' + user.id">Back</a>
+    <h2 class="mb-4">
+        posts of User {{user.id}}
+    </h2>
+    @if (posts) {
+        <ul class="list-group">
+            @for (post of posts; track post.id) {
+                <li class="list-group-item d-flex justify-content-between align-items-center" style="width: 60%;">
+                    <a [routerLink]="['/users', user.id, 'posts', post.id]">
+                    {{ post.title }}
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+</div>

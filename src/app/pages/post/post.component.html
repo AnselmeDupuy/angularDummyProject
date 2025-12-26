@@ -1,1 +1,33 @@
-<p>post works!</p>
+<div class="container">
+    <a [routerLink]="'/users/' + post.userId + '/posts'">Back</a>
+    <h2 class="mb-4">
+        Post Details
+    </h2>
+    @if (post) {
+        <div class="card" style="width: 24rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.body }}</p>
+            </div>
+        </div>
+        <div class="comments">
+            <h3 class="mt-4">Comments</h3>
+            @if (comments) {
+                <ul class="list-group">
+                    @for (comment of comments; track comment.id) {
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div>
+                                <h5>{{ comment.user.username }}</h5>
+                                <p>{{ comment.body }}</p>
+                            </div>
+                            <div>
+                                <span>Likes: </span>
+                                <span class="badge bg-primary" >{{ comment.likes}}</span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    }
+</div>
